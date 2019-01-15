@@ -1,0 +1,17 @@
+<div class="main-w3layouts wrapper">
+  <h1> SignUp Form</h1>
+  <div class="main-agileinfo">
+    <div class="agileits-top">
+      <form >
+        <input class="text email" type="email"  name="email" [(ngModel)]="email" placeholder="Email" required="">
+        <input class="text" type="password" name="password" [(ngModel)]="password" placeholder="Password" required="">
+        <input class="text " type="password" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Confirm Password" required="">
+        <div class="wthree-text">
+          <div class="clear"> </div>
+        </div>
+        <input type="submit" (click)="registerApi()" value="SIGNUP">
+      </form>
+      <p>Already have an Account?<button class="btn btn-success" (click)='onclick()'>login now</button></p>
+    </div>
+  </div>
+  

@@ -1,0 +1,63 @@
+
+
+
+<div class="topnav">
+    <a   [routerLink]="['/home']">Home</a>
+    <a (click)="logout()">logout</a>
+    <div class="search-container">
+      <form >
+        <input type="text" placeholder="Search for questions "  [(ngModel)]="search"  name="search">
+      </form>
+    </div>
+  </div>
+
+
+
+   <form>
+    <div class="form-group">
+     <strong style=" font-size: 22px">  <label>Ask a Question</label> </strong> 
+        <input class='form-control'   type="text" name="typeofQuestion"  [(ngModel)]="typeofQuestion" placeholder="type of qestion"/>
+        <input class='form-control'   type="text" name="question"  [(ngModel)]="question" placeholder="question"/>
+        <button (click)='AskaQuestion()'  class="btn btn-primary">submit</button>
+    </div>
+  </form>
+
+
+<strong> <p style="font-size: 25px ; padding-left: 40% ; color: mediumblue">  Top questions </p> </strong>
+
+<div style="padding-left: 15%">
+ 
+<div *ngIf="value" class="block" >
+     
+  <div *ngFor="let element of value | fliter :search">
+    
+
+          <strong >
+              <p style="color:rgb(199, 218, 35) ;font-size: 18px"> question posted by  :  <span style="color: rgb(32, 164, 182)"> {{element.name}}  </span>   &nbsp; &nbsp;    Questiontype  :  <span style="color: rgb(40, 95, 112)"> {{element.typeofQuestion}}  </span> </p>
+          </strong> 
+
+          <span style="color:rgb(231, 31, 31)  "> question </span>  :    {{element.question}} 
+            
+              <form  (submit)="submitAnswer(element)" >
+                <div class="form-group">
+                    <label>answer</label>
+                    <input class='form-control'   type="text" name="sendAnswer"  [(ngModel)]="sendAnswer" placeholder="answer"/>
+                </div>
+              </form>
+
+
+        <div *ngFor="let ans of element.answers" style="background-color: rgb(235, 229, 236)">
+            <strong><p style="color:rgb(230, 54, 23);font-size: 18px"> answered by : <samp style="color: rgb(17, 17, 16)">{{ans.name}}</samp>  </p> </strong>
+             <span style="color:rgb(141, 52, 224) ;font-size: 18px"> answer : </span> {{ans.answer}}
+        </div>
+     
+            <br><br>
+              <hr>
+            <br><br>
+
+  </div>
+
+</div>
+
+
+</div>
